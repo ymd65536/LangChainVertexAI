@@ -8,7 +8,7 @@ from langchain.prompts import PromptTemplate
 from utils.matching_engine import MatchingEngine
 from utils.matching_engine_utils import MatchingEngineUtils
 
-from embeddings.embedding_cls import CustomVertexAIEmbeddings as embedding
+from embeddings import embedding_cls as embedding
 from ai_config import config as config
 
 mengine = MatchingEngineUtils(
@@ -29,8 +29,8 @@ me = MatchingEngine.from_components(
     region=config.ME_REGION,
     gcs_bucket_name=f"gs://{config.ME_EMBEDDING_DIR}".split("/")[2],
     embedding=embeddings,
-    index_id=config.ME_INDEX_ID,
-    endpoint_id=config.ME_INDEX_ENDPOINT_ID,
+    index_id=ME_INDEX_ID,
+    endpoint_id=ME_INDEX_ENDPOINT_ID,
 )
 
 # Expose index to the retriever
